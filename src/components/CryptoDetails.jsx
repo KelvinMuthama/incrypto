@@ -25,6 +25,7 @@ const CryptoDetails = () => {
   const [timePeriod, setTimePeriod] = useState("7d");
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
   const cryptoDetails = data?.data?.coin;
+  console.log(cryptoDetails);
 
   const time = ["3h", "24h", "7d", "30d", "1y", "3m", "3y", "5y"];
 
@@ -35,11 +36,6 @@ const CryptoDetails = () => {
       icon: <DollarCircleOutlined />,
     },
     { title: "Rank", value: cryptoDetails?.rank, icon: <NumberOutlined /> },
-    {
-      title: "24h Volume",
-      value: `$ ${cryptoDetails && millify(Object.values(cryptoDetails)[11])}`,
-      icon: <ThunderboltOutlined />,
-    },
     {
       title: "Market Cap",
       value: `$ ${
@@ -162,9 +158,9 @@ const CryptoDetails = () => {
         </Row>
         <Col className="coin-links">
           <Title level={3} className="coin-details-heading">
-            {cryptoDetails.name} Links
+            {cryptoDetails?.name} Links
           </Title>
-          {cryptoDetails.links.map((link) => (
+          {cryptoDetails?.links.map((link) => (
             <Row className="coin-link" key={link.name}>
               <Title level={5} className="link-name">
                 {link.type}
