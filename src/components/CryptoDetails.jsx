@@ -32,8 +32,6 @@ const CryptoDetails = () => {
     timePeriod,
   });
   const cryptoDetails = data?.data?.coin;
-  console.log(timePeriod, coinId);
-  console.log(`>>>>>>>>>>>>>>>>>>${coinHistory}`);
 
   if (isFetching) return "Loading...";
 
